@@ -29,7 +29,7 @@ paddley = screen_size[1] - paddle_height - 10
 white = (255, 255, 255)
 turqoise = (3, 155, 229)
 grey2 = (44, 62, 80)
-red = (201,147,83)
+brown2 = (201,147,83)
 yellow = (255, 255, 0)
 ibory = (255, 248, 220)
 brown = (205, 92, 92)
@@ -108,7 +108,7 @@ class brickbreaker():
         
         # 새로운 벽돌 그리기
         for brick in self.newbricks:
-            pygame.draw.rect(self.screen, red, brick)
+            pygame.draw.rect(self.screen, brown2, brick)
 
     # 키보드 입력 함수
     def check_input(self):
