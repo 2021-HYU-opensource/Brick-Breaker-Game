@@ -229,7 +229,7 @@ class brickbreaker():
     # 점수와 남은 목숨 표시
     def show_stats(self):
         font_surface = self.font.render("SCORE : " + str(self.score) + "  LIVES : " + str(self.lives), False, black)
-        self.screen.blit(font_surface, (600, 5))
+        self.screen.blit(font_surface, (350, 5))
 
     # 화면에 메세지 출력
     def show_message(self, message):
