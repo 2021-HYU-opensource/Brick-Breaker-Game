@@ -205,15 +205,10 @@ class brickbreaker():
                 self.state = state_ballinpaddle
             else:
                 self.state = state_gameover
-                self.size_reset()
+               
                 
                 
-    # 공 사이즈 리셋 함수            
-    def size_reset(self):
-        global ball_diameter
-        global ball_radius
-        ball_diameter = 24
-        ball_radius = ball_diameter // 2
+   
 
     # 공 커지게 하는 함수
     def size_up(self):
@@ -229,7 +224,7 @@ class brickbreaker():
     # 점수와 남은 목숨 표시
     def show_stats(self):
         font_surface = self.font.render("SCORE : " + str(self.score) + "  LIVES : " + str(self.lives), False, black)
-        self.screen.blit(font_surface, (350, 5))
+        self.screen.blit(font_surface, (600, 5))
 
     # 화면에 메세지 출력
     def show_message(self, message):
