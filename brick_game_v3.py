@@ -205,6 +205,15 @@ class brickbreaker():
                 self.state = state_ballinpaddle
             else:
                 self.state = state_gameover
+                self.size_reset()
+                
+                
+    # 공 사이즈 리셋 함수            
+    def size_reset(self):
+        global ball_diameter
+        global ball_radius
+        ball_diameter = 24
+        ball_radius = ball_diameter // 2
 
     # 공 커지게 하는 함수
     def size_up(self):
