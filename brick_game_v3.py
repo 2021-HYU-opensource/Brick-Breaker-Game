@@ -189,6 +189,7 @@ class brickbreaker():
                 self.state = state_ballinpaddle
             else:
                 self.state = state_gameover
+                self.size_reset()
 
     # 공 커지게 하는 함수
     def size_up(self):
@@ -213,6 +214,12 @@ class brickbreaker():
         x = (screen_size[0] - size[0]) / 2
         y = (screen_size[1] - size[1]) / 2
         self.screen.blit(font_surface, (x, y))
+
+    def size_reset(self):
+        global ball_diameter
+        global ball_radius
+        ball_diameter = 24
+        ball_radius = ball_diameter //2
 
     # 1
     def run(self):
