@@ -164,6 +164,7 @@ class brickbreaker():
                 break
 
         # 공이 새로운 벽돌과 충돌
+<<<<<<< HEAD
         for brick in self.newbricks:
             if self.ball.colliderect(brick):
                 self.score += 3
@@ -171,6 +172,40 @@ class brickbreaker():
                 self.newbricks.remove(brick)
                 break
 
+=======
+        for nbrick in self.newbricks:
+            if self.ball.colliderect(nbrick):
+                global vel
+                self.score += 3
+                vel += 1
+
+                if self.ballvel[0] > 0:
+                    self.ballvel[0] += 1
+                else:
+                    self.ballvel[0] -= 1
+
+                if self.ballvel[1] > 0:
+                    self.ballvel[1] += 1
+                else:
+                    self.ballvel[1] -= 1
+
+                self.ballvel[1] = -self.ballvel[1]
+                self.newbricks.remove(nbrick)
+                self.size_up()
+                break
+
+    # 공 커지게 하는 함수
+    def size_up(self):
+        global ball_diameter
+        global ball_radius
+        global max_ballx
+        global max_bally
+        ball_diameter += 12
+        ball_radius = ball_diameter // 2
+        max_ballx = screen_size[0] - ball_diameter
+        max_bally = screen_size[1] - ball_diameter
+
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
         # 벽돌을 다 깼을 시
         if len(self.bricks) == 0 and len(self.newbricks) == 0:
             self.state = state_won

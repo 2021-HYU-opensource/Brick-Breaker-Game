@@ -6,16 +6,26 @@ from pygame.locals import *
 
 # 오브젝트의 크기
 screen_size = (850, 480)
+<<<<<<< HEAD
 brick_width = 80
 brick_height = 20
+=======
+brick_width = 50
+brick_height = 50
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 paddle_width = 120
 paddle_height = 20
 ball_diameter = 24
 ball_radius = ball_diameter // 2
 
 # 새로운 벽돌 관련 변수들
+<<<<<<< HEAD
 nbrick_width = 30
 nbrick_height = 30
+=======
+nbrick_width = 80
+nbrick_height = 60
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 
 # Boundaries
 max_paddlex = screen_size[0] - paddle_width
@@ -43,6 +53,12 @@ state_inplay = 1
 state_won = 2
 state_gameover = 3
 
+<<<<<<< HEAD
+=======
+# 속도 변수
+vel = 5
+
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 
 class brickbreaker():
 
@@ -56,14 +72,22 @@ class brickbreaker():
         self.init_game()
 
     def init_game(self):
+<<<<<<< HEAD
         self.lives = 5 # 생명
+=======
+        self.lives = 3
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
         self.score = 0
         self.state = state_ballinpaddle
 
         self.paddle = pygame.Rect(365, paddley, paddle_width, paddle_height)
         self.ball = pygame.Rect(365, paddley - ball_diameter, ball_diameter, ball_diameter)  # ball approximated to the rect object
 
+<<<<<<< HEAD
         self.ballvel = [5, -5]  # 공의 속도
+=======
+        # self.ballvel = [0, -50000000000]  # 공의 속도
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 
         self.create_bricks()
         self.create_new_bricks()
@@ -74,6 +98,7 @@ class brickbreaker():
         y_brick = 30
         self.bricks = [] # 벽돌의 정보를 리스트로 저장
 
+<<<<<<< HEAD
         # 벽돌을 7 * 9로 나열
         for i in range(7):
             x_brick = 30
@@ -97,6 +122,31 @@ class brickbreaker():
                 self.newbricks.append(pygame.Rect(x_nbrick, y_nbrick, nbrick_width, nbrick_height)) # (x좌표, y좌표, 너비, 높이)
                 x_nbrick += nbrick_width + 8
             y_nbrick += nbrick_height + 6
+=======
+        # 벽돌을 9 * 4로 나열
+        for i in range(4):
+            x_brick = 120
+            for j in range(9):
+                self.bricks.append(pygame.Rect(x_brick, y_brick, brick_width, brick_height)) # (x좌표, y좌표, 너비, 높이)
+                x_brick += brick_width + 20
+            y_brick += brick_height + 20
+
+        # self.bricks.append(pygame.Rect(350, 300, 150, 50)) # 테스트용으로 추가
+
+    # 특수 벽돌 생성 함수
+    def create_new_bricks(self):
+        # x_nbrick, y_nbrick -> 특수 벽돌 좌상단 좌표
+        y_nbrick = 10
+        self.newbricks = [] # 특수 벽돌 정보를 리스트로 저장
+
+        # 벽돌을 2 * 4로 나열
+        for i in range(4):
+            x_nbrick = 20
+            for j in range(2):
+                self.newbricks.append(pygame.Rect(x_nbrick, y_nbrick, nbrick_width, nbrick_height)) # (x좌표, y좌표, 너비, 높이)
+                x_nbrick += nbrick_width + 650
+            y_nbrick += nbrick_height + 20
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 
     # 벽돌 그리기 함수
     def draw_bricks(self):
@@ -122,7 +172,11 @@ class brickbreaker():
                 self.paddle.left = max_paddlex
 
         if keys[pygame.K_SPACE] and self.state == state_ballinpaddle:
+<<<<<<< HEAD
             self.ballvel = [5, -5]
+=======
+            self.ballvel = [vel, -vel] # 여기가 진짜 속도
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
             self.state = state_inplay
 
         if keys[pygame.K_q] and (self.state == state_gameover or self.state == state_won):
@@ -166,11 +220,32 @@ class brickbreaker():
         # 공이 새로운 벽돌과 충돌
         for nbrick in self.newbricks:
             if self.ball.colliderect(nbrick):
+<<<<<<< HEAD
                 self.score += 3
                 self.ballvel[1] = -self.ballvel[1]
                 self.newbricks.remove(nbrick)
                 self.size_up()
                 self.ballvel = [7, -7] #####
+=======
+                global vel
+                self.score += 3
+                vel += 1
+
+                if self.ballvel[0] > 0:
+                    self.ballvel[0] += 1
+                else:
+                    self.ballvel[0] -= 1
+                
+                if self.ballvel[1] > 0:
+                    self.ballvel[1] += 1
+                else:
+                    self.ballvel[1] -= 1
+                
+                self.ballvel[1] = - self.ballvel[1]
+
+                self.newbricks.remove(nbrick)
+                self.size_up()
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
                 break
 
         # 벽돌을 다 깼을 시
@@ -189,7 +264,14 @@ class brickbreaker():
                 self.state = state_ballinpaddle
             else:
                 self.state = state_gameover
+<<<<<<< HEAD
                 self.size_reset()
+=======
+               
+                
+                
+   
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
 
     # 공 커지게 하는 함수
     def size_up(self):
@@ -211,6 +293,7 @@ class brickbreaker():
     def show_message(self, message):
         size = self.font.size(message)
         font_surface = self.font.render(message, False, black)
+<<<<<<< HEAD
         x = (screen_size[0] - size[0])
         y = (screen_size[1] - size[1])
         self.screen.blit(font_surface, (x, y))
@@ -221,6 +304,12 @@ class brickbreaker():
         ball_diameter = 24
         ball_radius = ball_diameter //2
 
+=======
+        x = (screen_size[0] - size[0]) / 2
+        y = (screen_size[1] - size[1]) / 2
+        self.screen.blit(font_surface, (x, y))
+
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
     # 1
     def run(self):
 
@@ -265,4 +354,8 @@ class brickbreaker():
             pygame.display.update()
 
 game = brickbreaker()
+<<<<<<< HEAD
 game.run()
+=======
+game.run()
+>>>>>>> afe35b9700b55d6ac2b34ca4209b68fd7ec2afff
