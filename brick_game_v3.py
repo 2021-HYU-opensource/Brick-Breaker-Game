@@ -211,8 +211,8 @@ class brickbreaker():
     def show_message(self, message):
         size = self.font.size(message)
         font_surface = self.font.render(message, False, black)
-        x = (screen_size[0] - size[0]) / 2
-        y = (screen_size[1] - size[1]) / 2
+        x = (screen_size[0] - size[0])
+        y = (screen_size[1] - size[1])
         self.screen.blit(font_surface, (x, y))
 
     def size_reset(self):
