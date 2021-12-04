@@ -59,7 +59,7 @@ class brickbreaker():
         self.init_game()
 
     def init_game(self):
-        self.lives = 3
+        self.lives = 5
         self.score = 0
         self.state = state_ballinpaddle
 
